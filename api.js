@@ -38,5 +38,23 @@ api.get('/media/:nota1/:nota2/:nota3', (req, resp) => {
     
     resp.send('Média: ' + media + '.Situação: ' + situacao)
 })
+api.get('/calculadora/somar/:num1/:num2', (req, resp) => {
+    let n1 = Number(req.params.num1);
+    let n2 = Number(req.params.num2);
+    let s = n1+n2;
+    resp.send({
+            soma: s
+    });
+}) //http://localhost:5010/calculadora/somar/7/5
+
+
+api.get('/calculadora/subtrair', (req, resp) => {
+    let n1 = Number(req.query.num1);
+    let n2 = Number(req.query.num2);
+    let sub = n1 - n2;
+    resp.send({
+            subtracao: sub
+    });
+}) //http://localhost:5010/calculadora/subtrair?num1=10&num2=4
 
 api.listen(5010, ()=> console.log('API subiu!'));
